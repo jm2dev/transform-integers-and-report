@@ -89,3 +89,30 @@ Self-explanatory code: The solution you produce must speak for itself. Multiple 
 #+BEGIN_SRC shell
 sbt clean test
 #+END_SRC
+
+and using REPL:
+
+#+BEGIN_SRC shell
+sbt console
+
+scala> import com.jm2dev.ee.FizzBuzz
+scala> val input = 1 to 20
+scala> val result = FizzBuzz.transform(input)
+scala> import com.jm2dev.ee.Report
+scala> val report = Report.generate(result)
+scala> Report.prettyPrint(report)
+#+END_SRC
+
+* Coverage
+
+#+BEGIN_SRC shell
+sbt coverageReport
+xdg-open target/scala-2.11/scoverage-report/index.html
+#+END_SRC
+
+* Static analysis
+
+#+BEGIN_SRC shell
+sbt scapegoat
+xdg-open target/scala-2.11/scapegoat-report/scapegoat.html
+#+END_SRC
