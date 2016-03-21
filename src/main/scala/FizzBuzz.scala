@@ -10,6 +10,13 @@ object FizzBuzz {
   def transform(input: Inclusive): String = input.map(transform(_)).mkString(" ")
 
   def transform(number: Int): String = {
+    s"$number" contains ('3') match {
+      case true => "lucky"
+      case false => divisibles(number)
+    }
+  }
+
+  private def divisibles(number: Int): String = {
     val results = divisors.map((divisor) => divisibleBy(number, divisor._1, divisor._2))
       .filter(_.nonEmpty)
 
